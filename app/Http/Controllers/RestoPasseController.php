@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RestoPasse;
+use App\Models\Restopasse;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
@@ -10,7 +10,7 @@ class RestoPasseController extends Controller
 {
     public function index()
     {
-        $restopasses = RestoPasse::with('restaurant')->get();
+        $restopasses = Restopasse::with('restaurant')->get();
         return view('restopasse.index', compact('restopasses'));
     }
 
