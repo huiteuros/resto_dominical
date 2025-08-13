@@ -28,23 +28,23 @@ class RestoPasseController extends Controller
             'date_sortie' => 'required|date',
         ]);
 
-        RestoPasse::create($validated);
+        Restopasse::create($validated);
 
         return redirect()->route('restopasse.index')->with('success', 'Sortie restaurant créée avec succès !');
     }
 
-    public function show(RestoPasse $restopasse)
+    public function show(Restopasse $restopasse)
     {
         return view('restopasse.show', compact('restopasse'));
     }
 
-    public function edit(RestoPasse $restopasse)
+    public function edit(Restopasse $restopasse)
     {
         $restaurants = Restaurant::all();
         return view('restopasse.edit', compact('restopasse', 'restaurants'));
     }
 
-    public function update(Request $request, RestoPasse $restopasse)
+    public function update(Request $request, Restopasse $restopasse)
     {
         $validated = $request->validate([
             'id_restaurant' => 'required|exists:restaurant,id_restaurant',
@@ -57,7 +57,7 @@ class RestoPasseController extends Controller
         return redirect()->route('restopasse.index')->with('success', 'Sortie restaurant modifiée avec succès !');
     }
 
-    public function destroy(RestoPasse $restopasse)
+    public function destroy(Restopasse $restopasse)
     {
         $restopasse->delete();
 

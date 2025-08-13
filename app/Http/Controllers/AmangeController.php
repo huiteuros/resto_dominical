@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Amange;
 use App\Models\Copain;
-use App\Models\RestoPasse;
+use App\Models\Restopasse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AmangeController extends Controller
 {
     // Affiche la liste des copains présents pour un restopasse + liste de tous les copains pour ajout
-    public function edit(RestoPasse $restopasse)
+    public function edit(Restopasse $restopasse)
     {
         // Copains déjà présents
         $presentCopains = $restopasse->copains()->get();
@@ -22,7 +22,7 @@ class AmangeController extends Controller
         return view('amange.edit', compact('restopasse', 'presentCopains', 'allCopains'));
     }
 
-    public function store(Request $request, RestoPasse $restopasse)
+    public function store(Request $request, Restopasse $restopasse)
     {
         $request->validate([
             'id_copain' => 'required|exists:copain,id_copain',
@@ -38,7 +38,7 @@ class AmangeController extends Controller
 
 
     // Supprime un copain des présents
-    public function destroy(RestoPasse $restopasse, Copain $copain)
+    public function destroy(Restopasse $restopasse, Copain $copain)
     {
         $restopasse->copains()->detach($copain->id_copain);
 
