@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ $restaurant->nom_restau }}</h1>
+    <h1 class="h1">{{ $restaurant->nom_restau }}</h1>
     <p><strong>Type :</strong> {{ $restaurant->type_restau }}</p>
     <p><strong>Adresse :</strong> {{ $restaurant->adresse_postale }}</p>
     <p><strong>Site web :</strong> <a href="{{ $restaurant->lien_site_web }}" target="_blank">{{ $restaurant->lien_site_web }}</a></p>

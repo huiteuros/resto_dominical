@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Détails du repas</h1>
+<h1 class="h1">Détails du repas</h1>
 
 <p><strong>Restaurant :</strong> {{ $amange->restopasse->restaurant->nom_restau }}</p>
 <p><strong>Date :</strong> {{ $amange->restopasse->date_sortie->format('d/m/Y') }}</p>

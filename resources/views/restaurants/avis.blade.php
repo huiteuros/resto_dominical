@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Liste des avis</h1>
+    <h1 class="h1">Liste des avis</h1>
 
     <table class="table table-bordered">
         <thead>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Mes repas</h1>
+    <h1 class="h1">Mes repas</h1>
 
     @if($amanges->isEmpty())
         <p>Aucun repas trouvé.</p>

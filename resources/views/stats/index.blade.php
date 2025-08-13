@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h1>Statistiques</h1>
+    <h1 class="h1">Statistiques</h1>
 
     <section class="mb-5">
-        <h2>Meilleur taux de participation</h2>
+        <h2 class="h2">Meilleur taux de participation</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -25,7 +25,7 @@
     </section>
 
     <section class="mb-5">
-        <h2>Meilleur streak</h2>
+        <h2 class="h2">Meilleur streak</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -45,7 +45,7 @@
     </section>
 
     <section class="mb-5">
-        <h2>Meilleur restaurant par qualité de la nourriture</h2>
+        <h2 class="h2">Meilleur restaurant par qualité de la nourriture</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -65,7 +65,7 @@
     </section>
 
     <section class="mb-5">
-        <h2>Restaurant le plus cher (prix moyen)</h2>
+        <h2 class="h2">Restaurant le plus cher (prix moyen)</h2>
         @if($restoCher)
             <p><strong>{{ $restoCher->nom_restau }}</strong> avec un prix moyen à {{ number_format($restoCher->moyenne_prix, 2) }} /5</p>
         @else
@@ -74,7 +74,7 @@
     </section>
 
     <section class="mb-5">
-        <h2>Meilleur restaurant note globale</h2>
+        <h2 class="h2">Meilleur restaurant note globale</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>

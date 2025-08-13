@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Gérer les présents pour : {{ $restopasse->restaurant->nom_restau }} - {{ $restopasse->date_sortie->format('d/m/Y') }}</h1>
+    <h1 class="h1">Gérer les présents pour : {{ $restopasse->restaurant->nom_restau }} - {{ $restopasse->date_sortie->format('d/m/Y') }}</h1>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
