@@ -19,3 +19,5 @@ Prérequis : PHP, Composer, NPM
 Si vous passez par là, hésitez pas à ouvrir des issues si vous rencontrez un problème ou que vous avez une nouvelle idée :
 https://github.com/huiteuros/resto_dominical/issues
 Le bouton new issue en vert en haut à droite.
+
+La documentation du site est dispo ici : https://github.com/huiteuros/resto_dominical/wiki
