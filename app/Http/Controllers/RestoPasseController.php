@@ -10,7 +10,8 @@ class RestoPasseController extends Controller
 {
     public function index()
     {
-        $restopasses = Restopasse::with('restaurant')->get();
+        $restopasses = Restopasse::with('restaurant')->orderBy('date_sortie','desc')
+        ->get();
         return view('restopasse.index', compact('restopasses'));
     }
 

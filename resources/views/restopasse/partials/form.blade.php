@@ -21,7 +21,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="numero_dimanche" class="form-label">Numéro dimanche</label>
+        <label for="numero_dimanche" class="form-label">Numéro dimanche (-1 pour un hors série)</label>
         <input type="number" name="numero_dimanche" id="numero_dimanche" class="form-control" value="{{ old('numero_dimanche', $restopasse->numero_dimanche ?? '') }}">
         @error('numero_dimanche')
             <div class="text-danger">{{ $message }}</div>
