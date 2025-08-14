@@ -16,6 +16,6 @@ Prérequis : PHP, Composer, NPM
 - Faire les migrations : ```php artisan migrate``` (il est possible qu'il y ai des erreurs : à tester)
 
 ## Pour les copains 
-Si vous passez par là, hésitez pas à ouvrir des issues si vous rencontrez un porblème ou que vous avez une nouvelle idée :
+Si vous passez par là, hésitez pas à ouvrir des issues si vous rencontrez un problème ou que vous avez une nouvelle idée :
 https://github.com/huiteuros/resto_dominical/issues
 Le bouton new issue en vert en haut à droite.
