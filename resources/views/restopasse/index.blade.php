@@ -18,20 +18,18 @@
         <table id="restopasseTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Date sortie</th>
                     <th>Restaurant</th>
                     <th>Numéro dimanche</th>
-                    <th>Date sortie</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($restopasses as $restopasse)
                 <tr>
-                    <td>{{ $restopasse->id_restopasse }}</td>
+                    <td>{{ $restopasse->date_sortie->format('d/m/Y') }}</td>
                     <td>{{ $restopasse->restaurant->nom_restau ?? '—' }}</td>
                     <td>{{ $restopasse->numero_dimanche ?? '—' }}</td>
-                    <td>{{ $restopasse->date_sortie->format('d/m/Y') }}</td>
                     <td>
                         <a href="{{ route('restopasse.show', $restopasse) }}" class="btn btn-info btn-sm">Voir</a>
                         <a href="{{ route('restopasse.edit', $restopasse) }}" class="btn btn-warning btn-sm">Modifier</a>
