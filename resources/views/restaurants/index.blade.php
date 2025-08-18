@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Liste des restaurants')
+
 @section('content')
 <div class="container">
     <h1 class="h1">Liste des restaurants</h1>
@@ -9,7 +11,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-bordered">
+    <table id="restaurantsTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -34,7 +36,7 @@
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm" onclick="return confirm('Supprimer ce restaurant ?')">Supprimer</button>
                     </form>
-                    <a href="{{ route('restaurants.avis', $restaurant) }}" class="btn btn-primary btn-sm mt-2">Voir les avis</a>
+                    <a href="{{ route('restaurants.avis', $restaurant) }}" class="btn btn-primary btn-sm">Voir les avis</a>
                 </td>
             </tr>
         @empty

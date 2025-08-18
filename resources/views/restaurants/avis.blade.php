@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h1 class="h1">Liste des avis</h1>
+    <h1 class="h1">Liste des avis pour {{ $resto }}</h1>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped nowrap datatable">
         <thead>
             <tr>
                 <th>Copain</th>

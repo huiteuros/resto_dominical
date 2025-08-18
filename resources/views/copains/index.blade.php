@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Liste des Copains')
+
 @section('content')
 <div class="container">
     <h1 class="h1">Liste des Copains</h1>
@@ -9,7 +11,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-bordered">
+    <table id="copainsTable" class="table table-bordered table-striped nowrap datatable">
         <thead>
             <tr>
                 <th>Nom</th>

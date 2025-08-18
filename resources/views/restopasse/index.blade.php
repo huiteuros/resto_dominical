@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Liste des sorties restaurant')
+
 @section('content')
 <div class="container">
     <h1 class="h1">Liste des sorties restaurant</h1>
@@ -13,7 +15,7 @@
     @if($restopasses->isEmpty())
         <p>Aucune sortie enregistrée.</p>
     @else
-        <table class="table table-bordered">
+        <table id="restopasseTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -39,8 +41,8 @@
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" type="submit">Supprimer</button>
                         </form>
-                        <a href="{{ route('amange.edit', $restopasse) }}" class="btn btn-primary btn-sm">Gérer les présents</a>
 
+                        <a href="{{ route('amange.edit', $restopasse) }}" class="btn btn-primary btn-sm">Gérer les présents</a>
                     </td>
                 </tr>
                 @endforeach

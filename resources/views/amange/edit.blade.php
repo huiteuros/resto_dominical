@@ -8,7 +8,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <h3>Copains présents</h3>
+    <h3 class="h3">Copains présents</h3>
     <ul>
         @forelse($presentCopains as $copain)
             <li>
@@ -24,7 +24,7 @@
         @endforelse
     </ul>
 
-    <h3>Ajouter un copain</h3>
+    <h3 class="h3">Ajouter un copain</h3>
     <form action="{{ route('amange.store', $restopasse) }}" method="POST">
         @csrf
         <select name="id_copain" required>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Mes repas')
+
 @section('content')
 <div class="container">
     <h1 class="h1">Mes repas</h1>
@@ -7,7 +9,7 @@
     @if($amanges->isEmpty())
         <p>Aucun repas trouvé.</p>
     @else
-        <table class="table">
+        <table id="repasTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
             <thead>
                 <tr>
                     <th>Restaurant</th>

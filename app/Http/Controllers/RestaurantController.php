@@ -68,6 +68,8 @@ class RestaurantController extends Controller
 
     public function avis(Restaurant $restaurant){
         $data = ($restaurant->getAvis());
-        return view('restaurants.avis', compact('data'));
+        $resto = $restaurant->nom_restau;
+
+        return view('restaurants.avis', compact('data', 'resto'));
     }
 }
