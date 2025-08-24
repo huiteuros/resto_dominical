@@ -1,9 +1,12 @@
 ## Ce projet
 
 Les fonctionnalités de ce site ne sont disponnibles qu'une fois connecté. 
+
 Il est né d'une envie de statistiques sur les restaurants qu'on faisait entre copains.
+
 On peut donc gérer des restaurants et des copains. Laisser des avis sur les restaurants qu'on a fait et consulter qui était présent.
-C'est donc un projet perso, je vois peu de raison de le cloner mais on sait jamais. C'est dispo si jamais !
+
+C'est un projet perso, je vois peu de raison de le cloner mais on sait jamais. C'est dispo si jamais !
 
 ## Pour utiliser
 Prérequis : PHP, Composer, NPM
