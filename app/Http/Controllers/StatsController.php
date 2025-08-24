@@ -12,8 +12,9 @@ class StatsController extends Controller
             'meilleurTaux' => StatsService::meilleurTauxParticipation(),
             'meilleurStreak' => StatsService::meilleurStreak(),
             'meilleurQualite' => StatsService::meilleurRestoQualite(),
-            'restoCher' => StatsService::restoLePlusCher(),
+            'meilleurQualitePrix' => StatsService::meilleurRestoQualitePrix(),
             'meilleurOverall' => StatsService::meilleurRestoOverall(),
+            'meilleurNoteGenerale' => StatsService::meilleurRestoNoteGenerale()
         ]);
     }
 }

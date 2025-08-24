@@ -65,12 +65,23 @@
     </section>
 
     <section class="mb-5">
-        <h2 class="h2">Restaurant le plus cher (prix moyen)</h2>
-        @if($restoCher)
-            <p><strong>{{ $restoCher->nom_restau }}</strong> avec un prix moyen à {{ number_format($restoCher->moyenne_prix, 2) }} /5</p>
-        @else
-            <p>Aucun restaurant trouvé.</p>
-        @endif
+        <h2 class="h2">Meilleur restaurant rapport qualité/prix</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Restaurant</th>
+                    <th>Moyenne prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($meilleurQualitePrix as $resto)
+                <tr>
+                    <td>{{ $resto->nom_restau }}</td>
+                    <td>{{ number_format($resto->moyenne_prix, 2) }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </section>
 
     <section class="mb-5">
@@ -87,6 +98,26 @@
                 <tr>
                     <td>{{ $resto->nom_restau }}</td>
                     <td>{{ number_format($resto->moyenne_overall, 2) }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="h2">Meilleur restaurant toutes notes confondues</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Restaurant</th>
+                    <th>Total des notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($meilleurNoteGenerale as $resto)
+                <tr>
+                    <td>{{ $resto->nom_restau }}</td>
+                    <td>{{ number_format($resto->moyenne_generale, 2) }}</td>
                 </tr>
                 @endforeach
             </tbody>

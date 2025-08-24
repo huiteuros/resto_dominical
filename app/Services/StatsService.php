@@ -79,9 +79,9 @@ class StatsService
     }
 
     /**
-     * Resto le plus cher
+     * Classement restos par qualité prix
      */
-    public static function restoLePlusCher()
+    public static function meilleurRestoQualitePrix()
     {
         return Restaurant::select('restaurant.*')
             ->selectRaw('AVG(amange.prix) as moyenne_prix')
@@ -89,7 +89,7 @@ class StatsService
             ->join('amange', 'restopasse.id_restopasse', '=', 'amange.id_restopasse')
             ->groupBy('restaurant.id_restaurant')
             ->orderByDesc('moyenne_prix')
-            ->first();
+            ->get();
     }
 
     /**
@@ -103,6 +103,20 @@ class StatsService
             ->join('amange', 'restopasse.id_restopasse', '=', 'amange.id_restopasse')
             ->groupBy('restaurant.id_restaurant')
             ->orderByDesc('moyenne_overall')
+            ->get();
+    }
+
+    /**
+     * Classement restos par note globale
+     */
+    public static function meilleurRestoNoteGenerale()
+    {
+        return Restaurant::select('restaurant.*')
+            ->selectRaw('AVG(amange.prix) + AVG(amange.qualite_nourriture) + AVG(amange.ambiance) + AVG(amange.overall) as moyenne_generale')
+            ->join('restopasse', 'restaurant.id_restaurant', '=', 'restopasse.id_restaurant')
+            ->join('amange', 'restopasse.id_restopasse', '=', 'amange.id_restopasse')
+            ->groupBy('restaurant.id_restaurant')
+            ->orderByDesc('moyenne_generale')
             ->get();
     }
 }
