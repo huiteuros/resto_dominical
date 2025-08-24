@@ -9,7 +9,7 @@
     @if($amanges->isEmpty())
         <p>Aucun repas trouvé.</p>
     @else
-        <table id="repasTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
+        <table id="repasTable" class="table table-bordered table-striped datatable" style="width:100%">
             <thead>
                 <tr>
                     <th>Restaurant</th>
@@ -31,18 +31,20 @@
                         <td>{{ $amange->qualite_nourriture ?? 'N/A' }}</td>
                         <td>{{ $amange->ambiance ?? 'N/A' }}</td>
                         <td>{{ $amange->overall ?? 'N/A' }}</td>
-                        <td>{{ $amange->avis ?? '-' }}</td>
+                        <td class="avis-column">{{ $amange->avis ?? '-' }}</td>
                         <td>
-                            <a href="{{ route('amange.show', ['id_copain' => $amange->id_copain, 'id_restopasse' => $amange->id_restopasse]) }}" class="btn btn-info btn-sm">Voir</a>
+                            <div class="d-flex flex-column flex-sm-row gap-1">
+                                <a href="{{ route('amange.show', ['id_copain' => $amange->id_copain, 'id_restopasse' => $amange->id_restopasse]) }}" class="btn btn-info btn-sm">Voir</a>
 
-                            <a href="{{ route('amange.crudedit', ['id_copain' => $amange->id_copain, 'id_restopasse' => $amange->id_restopasse]) }}" class="btn btn-warning btn-sm">Modifier</a>
+                                <a href="{{ route('amange.crudedit', ['id_copain' => $amange->id_copain, 'id_restopasse' => $amange->id_restopasse]) }}" class="btn btn-warning btn-sm">Modifier</a>
 
-                            <form action="{{ route('amange.cruddestroy', ['id_copain' => $amange->id_copain, 'id_restopasse' => $amange->id_restopasse]) }}" method="POST" style="display:inline-block"
-                                onsubmit="return confirm('Supprimer ce repas ?');">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm" type="submit">Supprimer</button>
-                            </form>
+                                <form action="{{ route('amange.cruddestroy', ['id_copain' => $amange->id_copain, 'id_restopasse' => $amange->id_restopasse]) }}" method="POST" class="d-inline"
+                                    onsubmit="return confirm('Supprimer ce repas ?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm w-100" type="submit">Supprimer</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

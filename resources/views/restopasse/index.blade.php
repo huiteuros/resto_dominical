@@ -15,7 +15,7 @@
     @if($restopasses->isEmpty())
         <p>Aucune sortie enregistrée.</p>
     @else
-        <table id="restopasseTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
+        <table id="restopasseTable" class="table table-bordered table-striped datatable" style="width:100%">
             <thead>
                 <tr>
                     <th>Date sortie</th>
@@ -31,16 +31,18 @@
                     <td>{{ $restopasse->restaurant->nom_restau ?? '—' }}</td>
                     <td>{{ $restopasse->numero_dimanche ?? '—' }}</td>
                     <td>
-                        <a href="{{ route('restopasse.show', $restopasse) }}" class="btn btn-info btn-sm">Voir</a>
-                        <a href="{{ route('restopasse.edit', $restopasse) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        <div class="d-flex flex-column flex-sm-row gap-1">
+                            <a href="{{ route('restopasse.show', $restopasse) }}" class="btn btn-info btn-sm">Voir</a>
+                            <a href="{{ route('restopasse.edit', $restopasse) }}" class="btn btn-warning btn-sm">Modifier</a>
 
-                        <form action="{{ route('restopasse.destroy', $restopasse) }}" method="POST" style="display:inline-block" onsubmit="return confirm('Supprimer cette sortie ?')">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm" type="submit">Supprimer</button>
-                        </form>
+                            <form action="{{ route('restopasse.destroy', $restopasse) }}" method="POST" class="d-inline" onsubmit="return confirm('Supprimer cette sortie ?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm w-100" type="submit">Supprimer</button>
+                            </form>
 
-                        <a href="{{ route('amange.edit', $restopasse) }}" class="btn btn-primary btn-sm">Gérer les présents</a>
+                            <a href="{{ route('amange.edit', $restopasse) }}" class="btn btn-primary btn-sm">Gérer les présents</a>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

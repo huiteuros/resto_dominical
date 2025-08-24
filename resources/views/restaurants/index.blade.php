@@ -11,7 +11,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table id="restaurantsTable" class="table table-bordered table-striped nowrap datatable" style="width:100%">
+    <table id="restaurantsTable" class="table table-bordered table-striped datatable" style="width:100%">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -29,14 +29,16 @@
                 <td>{{ $restaurant->adresse_postale }}</td>
                 <td>{{ $restaurant->ouvert_dimanche_midi ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ route('restaurants.show', $restaurant) }}" class="btn btn-info btn-sm">Voir</a>
-                    <a href="{{ route('restaurants.edit', $restaurant) }}" class="btn btn-warning btn-sm">Modifier</a>
-                    <form action="{{ route('restaurants.destroy', $restaurant) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Supprimer ce restaurant ?')">Supprimer</button>
-                    </form>
-                    <a href="{{ route('restaurants.avis', $restaurant) }}" class="btn btn-primary btn-sm">Voir les avis</a>
+                    <div class="d-flex flex-column flex-sm-row gap-1">
+                        <a href="{{ route('restaurants.show', $restaurant) }}" class="btn btn-info btn-sm">Voir</a>
+                        <a href="{{ route('restaurants.edit', $restaurant) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        <form action="{{ route('restaurants.destroy', $restaurant) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm w-100" onclick="return confirm('Supprimer ce restaurant ?')">Supprimer</button>
+                        </form>
+                        <a href="{{ route('restaurants.avis', $restaurant) }}" class="btn btn-primary btn-sm">Voir les avis</a>
+                    </div>
                 </td>
             </tr>
         @empty

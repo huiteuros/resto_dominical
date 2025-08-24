@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="h1">Liste des avis pour {{ $resto }}</h1>
 
-    <table class="table table-bordered table-striped nowrap datatable">
+    <table class="table table-bordered table-striped datatable">
         <thead>
             <tr>
                 <th>Copain</th>
@@ -19,7 +19,7 @@
         @forelse($data as $avis)
             <tr>
                 <td>{{ $avis->nom }} {{ $avis->prenom }}</td>
-                <td>{{ $avis->avis }}</td>
+                <td class="avis-column">{{ $avis->avis }}</td>
                 <td>{{ $avis->overall }}</td>
                 <td>{{ $avis->qualite_nourriture }}</td>
                 <td>{{ $avis->prix }}</td>

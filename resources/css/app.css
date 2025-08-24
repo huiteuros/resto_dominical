@@ -70,4 +70,44 @@ body {
         min-height: 44px;
         padding: 8px 16px;
     }
+    
+    /* Styles spécifiques pour les DataTables responsive */
+    .datatable td {
+        word-wrap: break-word;
+        max-width: 150px;
+    }
+    
+    /* Style pour les colonnes d'avis - retour à la ligne forcé */
+    .datatable td.avis-column {
+        max-width: 200px;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+    
+    /* Améliorations pour les boutons d'actions sur mobile */
+    .datatable .d-flex.flex-column .btn {
+        margin-bottom: 2px;
+        width: 100%;
+    }
+    
+    /* Amélioration du responsive DataTables */
+    .datatable.dataTable.dtr-inline.collapsed tbody td:first-child:before {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* Alignement de la flèche et du texte dans la première colonne responsive */
+    .datatable.dataTable.dtr-inline.collapsed tbody td:first-child {
+        position: relative;
+        padding-left: 30px;
+        vertical-align: middle;
+    }
+    
+    .datatable.dataTable.dtr-inline.collapsed tbody td:first-child:before {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        vertical-align: middle;
+    }
 }

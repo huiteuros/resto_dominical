@@ -11,7 +11,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table id="copainsTable" class="table table-bordered table-striped nowrap datatable">
+    <table id="copainsTable" class="table table-bordered table-striped datatable">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -29,13 +29,15 @@
                     <td>{{ $copain->pseudo }}</td>
                     <td>{{ $copain->user->email ?? '—' }}</td>
                     <td>
-                        <a href="{{ route('copains.show', $copain) }}" class="btn btn-info btn-sm">Voir</a>
-                        <a href="{{ route('copains.edit', $copain) }}" class="btn btn-warning btn-sm">Modifier</a>
-                        <form action="{{ route('copains.destroy', $copain) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Supprimer ce copain ?')">Supprimer</button>
-                        </form>
+                        <div class="d-flex flex-column flex-sm-row gap-1">
+                            <a href="{{ route('copains.show', $copain) }}" class="btn btn-info btn-sm">Voir</a>
+                            <a href="{{ route('copains.edit', $copain) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            <form action="{{ route('copains.destroy', $copain) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm w-100" onclick="return confirm('Supprimer ce copain ?')">Supprimer</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @empty
