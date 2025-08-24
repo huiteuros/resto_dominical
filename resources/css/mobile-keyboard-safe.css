@@ -1,0 +1,60 @@
+/* Version simplifiée pour test - sans règles problématiques */
+
+/* Styles pour les formulaires avec étoiles */
+.star-rating {
+    direction: rtl;
+    font-size: 1.8rem;
+    unicode-bidi: bidi-override;
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: #ffc107; /* jaune bootstrap */
+}
+
+/* Mobile uniquement - règles basiques */
+@media only screen and (max-width: 768px) {
+    /* Style pour les champs de saisie actifs sur mobile */
+    .form-control:focus, 
+    .form-select:focus,
+    .form-check-input:focus {
+        transition: all 0.3s ease;
+    }
+    
+    /* Amélioration pour les textarea */
+    textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    /* Style pour les boutons sur mobile */
+    .btn {
+        min-height: 44px;
+        padding: 8px 16px;
+    }
+    
+    .form-control, .form-select {
+        font-size: 16px; /* Évite le zoom automatique sur iOS */
+    }
+}
+
+/* Responsive pour les étoiles sur mobile */
+@media only screen and (max-width: 576px) {
+    .star-rating {
+        font-size: 1.5rem;
+    }
+}

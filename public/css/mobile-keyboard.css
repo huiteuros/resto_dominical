@@ -1,0 +1,92 @@
+/* Styles pour gérer l'affichage mobile avec clavier virtuel */
+
+/* Styles généraux pour mobile */
+@media only screen and (max-width: 768px) {
+    body {
+        /* Assure que la page peut défiler complètement */
+        position: relative;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        /* Ajuste la hauteur minimale pour permettre le scroll */
+        min-height: calc(100vh + 300px);
+        padding-bottom: 300px; /* Espace supplémentaire en bas */
+    }
+    
+    /* Style pour les champs de saisie actifs sur mobile */
+    .form-control:focus, 
+    .form-select:focus,
+    .form-check-input:focus,
+    .star-rating input:focus + label,
+    input[type="radio"]:focus + label,
+    input[type="checkbox"]:focus + label {
+        /* Assure une transition douce */
+        transition: all 0.3s ease;
+    }
+    
+    /* Amélioration pour les textarea */
+    textarea.form-control {
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    /* Style pour les boutons sur mobile */
+    .btn {
+        min-height: 44px; /* Taille minimale recommandée pour mobile */
+        padding: 8px 16px;
+    }
+}
+
+/* Styles spécifiques pour gérer le viewport mobile */
+@media only screen and (max-device-width: 768px) {
+    html, body {
+        /* Permet le scroll complet de la page */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: auto !important;
+    }
+    
+    /* Amélioration pour les formulaires sur très petit écran */
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control, .form-select {
+        font-size: 16px; /* Évite le zoom automatique sur iOS */
+    }
+}
+
+/* Styles pour les formulaires avec étoiles */
+.star-rating {
+    direction: rtl;
+    font-size: 1.8rem;
+    unicode-bidi: bidi-override;
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: #ffc107; /* jaune bootstrap */
+}
+
+/* Responsive pour les étoiles sur mobile */
+@media only screen and (max-width: 576px) {
+    .star-rating {
+        font-size: 1.5rem;
+    }
+}

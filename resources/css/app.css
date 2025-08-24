@@ -1,3 +1,73 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* CSS personnalisé pour l'application */
+
+/* Vous pouvez ajouter ici vos styles personnalisés */
+
+/* Styles de base pour le site */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Amélioration des étoiles pour tous les formulaires */
+.star-rating {
+    direction: rtl;
+    font-size: 1.8rem;
+    unicode-bidi: bidi-override;
+    display: inline-flex;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: #ffc107;
+}
+
+/* Responsive pour les étoiles */
+@media (max-width: 576px) {
+    .star-rating {
+        font-size: 1.5rem;
+    }
+}
+
+/* Améliorations mobiles - SANS affecter la navbar */
+@media only screen and (max-width: 768px) {
+    /* Styles pour les formulaires seulement */
+    main .container:has(form) {
+        padding-bottom: 200px;
+        min-height: calc(100vh + 100px);
+    }
+    
+    /* Styles pour les champs de formulaire */
+    .form-control:focus {
+        transition: all 0.3s ease;
+    }
+    
+    textarea.form-control {
+        font-size: 16px; /* Évite le zoom sur iOS */
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    input[type="text"], 
+    input[type="email"], 
+    input[type="password"],
+    input[type="number"],
+    input[type="date"] {
+        font-size: 16px; /* Évite le zoom sur iOS */
+    }
+    
+    .btn {
+        min-height: 44px;
+        padding: 8px 16px;
+    }
+}
