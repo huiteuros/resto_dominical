@@ -14,7 +14,7 @@
                 <tr>
                     <th>Restaurant</th>
                     <th>Date</th>
-                    <th>Prix</th>
+                    <th>Rapport qualité/prix</th>
                     <th>Qualité nourriture</th>
                     <th>Ambiance</th>
                     <th>Note globale</th>

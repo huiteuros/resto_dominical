@@ -5,7 +5,7 @@
 
 <p><strong>Restaurant :</strong> {{ $amange->restopasse->restaurant->nom_restau }}</p>
 <p><strong>Date :</strong> {{ $amange->restopasse->date_sortie->format('d/m/Y') }}</p>
-<p><strong>Prix :</strong> {{ $amange->prix ?? 'N/A' }}</p>
+<p><strong>Rapport qualité/prix :</strong> {{ $amange->prix ?? 'N/A' }}</p>
 <p><strong>Qualité nourriture :</strong> {{ $amange->qualite_nourriture ?? 'N/A' }}</p>
 <p><strong>Ambiance :</strong> {{ $amange->ambiance ?? 'N/A' }}</p>
 <p><strong>Note globale :</strong> {{ $amange->overall ?? 'N/A' }}</p>

@@ -16,7 +16,7 @@
         @endphp
 
         @foreach([
-            'prix' => 'Prix',
+            'prix' => 'Rapport qualité/prix',
             'qualite_nourriture' => 'Qualité nourriture',
             'ambiance' => 'Ambiance',
             'overall' => 'Note globale'
