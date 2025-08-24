@@ -16,8 +16,8 @@
             <tr>
                 <th>Nom</th>
                 <th>Type</th>
-                <th>Adresse</th>
                 <th>Ouvert dimanche midi</th>
+                <th>Adresse</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,8 +26,8 @@
             <tr>
                 <td>{{ $restaurant->nom_restau }}</td>
                 <td>{{ $restaurant->type_restau }}</td>
-                <td>{{ $restaurant->adresse_postale }}</td>
                 <td>{{ $restaurant->ouvert_dimanche_midi ? 'Oui' : 'Non' }}</td>
+                <td>{{ $restaurant->adresse_postale }}</td> 
                 <td>
                     <div class="d-flex flex-column flex-sm-row gap-1">
                         <a href="{{ route('restaurants.show', $restaurant) }}" class="btn btn-info btn-sm">Voir</a>
@@ -37,7 +37,7 @@
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm w-100" onclick="return confirm('Supprimer ce restaurant ?')">Supprimer</button>
                         </form>
-                        <a href="{{ route('restaurants.avis', $restaurant) }}" class="btn btn-primary btn-sm">Voir les avis</a>
+                        <a href="{{ route('restaurants.avis', $restaurant) }}" class="btn btn-primary btn-sm">Avis </a>
                     </div>
                 </td>
             </tr>
