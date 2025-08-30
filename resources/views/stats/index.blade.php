@@ -110,7 +110,8 @@
             <thead>
                 <tr>
                     <th>Restaurant</th>
-                    <th>Total des notes</th>
+                    <th>Moyenne /20</th>
+                    <th>Nombre d'avis</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,6 +119,7 @@
                 <tr>
                     <td>{{ $resto->nom_restau }}</td>
                     <td>{{ number_format($resto->moyenne_generale, 2) }}</td>
+                    <td>{{ $resto->nb_avis }}</td>
                 </tr>
                 @endforeach
             </tbody>

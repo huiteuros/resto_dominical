@@ -112,7 +112,7 @@ class StatsService
     public static function meilleurRestoNoteGenerale()
     {
         return Restaurant::select('restaurant.*')
-            ->selectRaw('AVG(amange.prix) + AVG(amange.qualite_nourriture) + AVG(amange.ambiance) + AVG(amange.overall) as moyenne_generale')
+            ->selectRaw('AVG(amange.prix) + AVG(amange.qualite_nourriture) + AVG(amange.ambiance) + AVG(amange.overall) as moyenne_generale, COUNT(amange.prix) as nb_avis')
             ->join('restopasse', 'restaurant.id_restaurant', '=', 'restopasse.id_restaurant')
             ->join('amange', 'restopasse.id_restopasse', '=', 'amange.id_restopasse')
             ->groupBy('restaurant.id_restaurant')
