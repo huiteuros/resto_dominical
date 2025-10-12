@@ -26,6 +26,11 @@
                     </x-nav-link>
                 </li>
                 <li class="nav-item">
+                    <x-nav-link :href="route('avis.mes-avis')" :active="request()->routeIs('avis.mes-avis')" class="nav-link">
+                        {{ __('Mes avis lieux') }}
+                    </x-nav-link>
+                </li>
+                <li class="nav-item">
                     <x-nav-link :href="route('stats.index')" :active="request()->routeIs('stats.*')" class="nav-link">
                         {{ __('Les stats des copains') }}
                     </x-nav-link>
@@ -38,6 +43,16 @@
                 <li class="nav-item">
                     <x-nav-link :href="route('copains.index')" :active="request()->routeIs('copains.*')" class="nav-link">
                         {{ __('Copains') }}
+                    </x-nav-link>
+                </li>
+                <li class="nav-item">
+                    <x-nav-link :href="route('lieux.index')" :active="request()->routeIs('lieux.*')" class="nav-link">
+                        {{ __('Lieux') }}
+                    </x-nav-link>
+                </li>
+                <li class="nav-item">
+                    <x-nav-link :href="route('types.index')" :active="request()->routeIs('types.*')" class="nav-link">
+                        {{ __('Types') }}
                     </x-nav-link>
                 </li>
             </ul>

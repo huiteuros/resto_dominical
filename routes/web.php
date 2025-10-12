@@ -5,6 +5,9 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\CopainController;
 use App\Http\Controllers\RestoPasseController;
 use App\Http\Controllers\AmangeController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\LieuController;
+use App\Http\Controllers\AvisController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,6 +51,20 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/stats', [App\Http\Controllers\StatsController::class, 'index'])->name('stats.index');
     
+    // Routes pour les types et les lieux
+    Route::resource('types', TypeController::class);
+    Route::resource('lieux', LieuController::class);
+    Route::post('/lieux/store-type', [LieuController::class, 'storeType'])->name('lieux.storeType');
+
+    // Routes pour les avis sur les lieux
+    Route::get('/lieux/{lieu}/avis', [AvisController::class, 'index'])->name('avis.index');
+    Route::get('/lieux/{lieu}/avis/create', [AvisController::class, 'create'])->name('avis.create');
+    Route::post('/lieux/{lieu}/avis', [AvisController::class, 'store'])->name('avis.store');
+    Route::get('/lieux/{lieu}/avis/{avis}', [AvisController::class, 'show'])->name('avis.show');
+    Route::get('/lieux/{lieu}/avis/{avis}/edit', [AvisController::class, 'edit'])->name('avis.edit');
+    Route::put('/lieux/{lieu}/avis/{avis}', [AvisController::class, 'update'])->name('avis.update');
+    Route::delete('/lieux/{lieu}/avis/{avis}', [AvisController::class, 'destroy'])->name('avis.destroy');
+    Route::get('/mes-avis-lieux', [AvisController::class, 'mesAvis'])->name('avis.mes-avis');
 
 });
 

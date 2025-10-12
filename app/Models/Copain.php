@@ -29,4 +29,9 @@ class Copain extends Model
     {
         return $this->hasMany(Amange::class, 'id_copain');
     }
+
+    public function avis(): HasMany
+    {
+        return $this->hasMany(Avis::class, 'id_copain');
+    }
 }
