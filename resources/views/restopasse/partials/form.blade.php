@@ -21,9 +21,22 @@
     </div>
 
     <div class="mb-3">
-        <label for="numero_dimanche" class="form-label">Numéro dimanche (-1 pour un hors série)</label>
-        <input type="number" name="numero_dimanche" id="numero_dimanche" class="form-control" value="{{ old('numero_dimanche', $restopasse->numero_dimanche ?? '') }}">
-        @error('numero_dimanche')
+        <label class="form-label">Type de sortie</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="serie_dimanche" id="serie_dimanche_oui" value="1" 
+                {{ old('serie_dimanche', (isset($restopasse) && $restopasse->numero_dimanche >= 0) ? '1' : '0') == '1' ? 'checked' : '' }}>
+            <label class="form-check-label" for="serie_dimanche_oui">
+                Série du dimanche
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="serie_dimanche" id="serie_dimanche_non" value="0" 
+                {{ old('serie_dimanche', (isset($restopasse) && $restopasse->numero_dimanche >= 0) ? '1' : '0') == '0' ? 'checked' : '' }}>
+            <label class="form-check-label" for="serie_dimanche_non">
+                Hors série
+            </label>
+        </div>
+        @error('serie_dimanche')
             <div class="text-danger">{{ $message }}</div>
         @enderror
     </div>

@@ -11,11 +11,12 @@
         </tr>
         <tr>
             <th>Restaurant</th>
-            <td>{{ $restopasse->restaurant->nom_restau ?? '—' }}</td>
-        </tr>
-        <tr>
-            <th>Numéro dimanche</th>
-            <td>{{ $restopasse->numero_dimanche ?? '—' }}</td>
+            <td>
+                {{ $restopasse->restaurant->nom_restau ?? '—' }}
+                @if($restopasse->numero_dimanche == -1)
+                    <span class="badge bg-secondary ms-2">hors-série</span>
+                @endif
+            </td>
         </tr>
         <tr>
             <th>Date sortie</th>

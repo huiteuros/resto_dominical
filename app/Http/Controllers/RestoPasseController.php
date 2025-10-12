@@ -25,9 +25,22 @@ class RestoPasseController extends Controller
     {
         $validated = $request->validate([
             'id_restaurant' => 'required|exists:restaurant,id_restaurant',
-            'numero_dimanche' => 'nullable|integer',
+            'serie_dimanche' => 'required|boolean',
             'date_sortie' => 'required|date',
         ]);
+
+        // Déterminer le numéro de dimanche
+        if ($validated['serie_dimanche']) {
+            // Récupérer le plus haut numéro de dimanche et ajouter 1
+            $maxNumero = Restopasse::max('numero_dimanche');
+            $validated['numero_dimanche'] = ($maxNumero !== null && $maxNumero >= 0) ? $maxNumero + 1 : 1;
+        } else {
+            // Hors série
+            $validated['numero_dimanche'] = -1;
+        }
+
+        // Retirer serie_dimanche des données à sauvegarder
+        unset($validated['serie_dimanche']);
 
         Restopasse::create($validated);
 
@@ -49,9 +62,27 @@ class RestoPasseController extends Controller
     {
         $validated = $request->validate([
             'id_restaurant' => 'required|exists:restaurant,id_restaurant',
-            'numero_dimanche' => 'nullable|integer',
+            'serie_dimanche' => 'required|boolean',
             'date_sortie' => 'required|date',
         ]);
+
+        // Déterminer le numéro de dimanche
+        if ($validated['serie_dimanche']) {
+            // Si c'était déjà une série, garder le même numéro
+            if ($restopasse->numero_dimanche >= 0) {
+                $validated['numero_dimanche'] = $restopasse->numero_dimanche;
+            } else {
+                // Sinon, récupérer le plus haut numéro de dimanche et ajouter 1
+                $maxNumero = Restopasse::max('numero_dimanche');
+                $validated['numero_dimanche'] = ($maxNumero !== null && $maxNumero >= 0) ? $maxNumero + 1 : 1;
+            }
+        } else {
+            // Hors série
+            $validated['numero_dimanche'] = -1;
+        }
+
+        // Retirer serie_dimanche des données à sauvegarder
+        unset($validated['serie_dimanche']);
 
         $restopasse->update($validated);
 

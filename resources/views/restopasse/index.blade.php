@@ -20,7 +20,6 @@
                 <tr>
                     <th>Date sortie</th>
                     <th>Restaurant</th>
-                    <th>Numéro dimanche</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -28,8 +27,12 @@
                 @foreach($restopasses as $restopasse)
                 <tr>
                     <td>{{ $restopasse->date_sortie->format('d/m/Y') }}</td>
-                    <td>{{ $restopasse->restaurant->nom_restau ?? '—' }}</td>
-                    <td>{{ $restopasse->numero_dimanche ?? '—' }}</td>
+                    <td>
+                        {{ $restopasse->restaurant->nom_restau ?? '—' }}
+                        @if($restopasse->numero_dimanche == -1)
+                            <span class="badge bg-secondary ms-2">hors-série</span>
+                        @endif
+                    </td>
                     <td>
                         <div class="d-flex flex-column flex-sm-row gap-1">
                             <a href="{{ route('restopasse.show', $restopasse) }}" class="btn btn-info btn-sm">Voir</a>
