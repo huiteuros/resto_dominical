@@ -53,7 +53,9 @@ Route::middleware('auth')->group(function () {
     
     // Routes pour les types et les lieux
     Route::resource('types', TypeController::class);
-    Route::resource('lieux', LieuController::class);
+    Route::resource('lieux', LieuController::class)->parameters([
+        'lieux' => 'lieu'
+    ]);
     Route::post('/lieux/store-type', [LieuController::class, 'storeType'])->name('lieux.storeType');
 
     // Routes pour les avis sur les lieux
