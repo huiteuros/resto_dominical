@@ -24,9 +24,16 @@
             </thead>
             <tbody>
                 @foreach($amanges as $amange)
-                    <tr>
-                        <td>{{ $amange->restopasse->restaurant->nom_restau }}</td>
-                        <td>{{ \Carbon\Carbon::parse($amange->restopasse->date_sortie)->format('d/m/Y') }}</td>
+                    <tr class="{{ $amange->needs_evaluation ? 'table-warning' : '' }}">
+                        <td>
+                            {{ $amange->restopasse->restaurant->nom_restau }}
+                            @if($amange->needs_evaluation)
+                                <span class="badge bg-warning text-dark ms-2">À évaluer</span>
+                            @endif
+                        </td>
+                        <td data-order="{{ \Carbon\Carbon::parse($amange->restopasse->date_sortie)->format('Y-m-d') }}">
+                            {{ \Carbon\Carbon::parse($amange->restopasse->date_sortie)->format('d/m/Y') }}
+                        </td>
                         <td>{{ $amange->prix ?? 'N/A' }}</td>
                         <td>{{ $amange->qualite_nourriture ?? 'N/A' }}</td>
                         <td>{{ $amange->ambiance ?? 'N/A' }}</td>

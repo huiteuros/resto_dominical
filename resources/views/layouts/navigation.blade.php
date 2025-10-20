@@ -15,45 +15,80 @@
         <div class="collapse navbar-collapse" id="mainNavbar">
             <!-- Left side links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <x-nav-link :href="route('restopasse.index')" :active="request()->routeIs('restopasse.*')" class="nav-link">
-                        {{ __('Resto passés') }}
-                    </x-nav-link>
+                <!-- Groupe Restaurant Dominical -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="restaurantDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Restaurant Dominical
+                        @if(isset($repasAEvaluer) && $repasAEvaluer > 0)
+                            <span class="badge bg-warning text-dark ms-1">{{ $repasAEvaluer }}</span>
+                        @endif
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="restaurantDropdown">
+                        <li>
+                            <x-dropdown-link :href="route('restopasse.index')" :active="request()->routeIs('restopasse.*')" class="dropdown-item">
+                                {{ __('Resto passés') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('amange.index')" :active="request()->routeIs('amange.*')" class="dropdown-item">
+                                {{ __('Mes repas (avis)') }}
+                                @if(isset($repasAEvaluer) && $repasAEvaluer > 0)
+                                    <span class="badge bg-warning text-dark ms-2">{{ $repasAEvaluer }}</span>
+                                @endif
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('restaurants.index')" :active="request()->routeIs('restaurants.*')" class="dropdown-item">
+                                {{ __('Restaurants') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('stats.index')" :active="request()->routeIs('stats.*')" class="dropdown-item">
+                                {{ __('Les stats des copains') }}
+                            </x-dropdown-link>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('amange.index')" :active="request()->routeIs('amange.*')" class="nav-link">
-                        {{ __('Mes repas (avis)') }}
-                    </x-nav-link>
+
+                <!-- Groupe Carnet d'adresse -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="carnetDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Carnet d'adresse
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="carnetDropdown">
+                        <li>
+                            <x-dropdown-link :href="route('avis.mes-avis')" :active="request()->routeIs('avis.mes-avis')" class="dropdown-item">
+                                {{ __('Mes avis lieux') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('lieux.index')" :active="request()->routeIs('lieux.*')" class="dropdown-item">
+                                {{ __('Lieux') }}
+                            </x-dropdown-link>
+                        </li>
+                        <li>
+                            <x-dropdown-link :href="route('types.index')" :active="request()->routeIs('types.*')" class="dropdown-item">
+                                {{ __('Types') }}
+                            </x-dropdown-link>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('avis.mes-avis')" :active="request()->routeIs('avis.mes-avis')" class="nav-link">
-                        {{ __('Mes avis lieux') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('stats.index')" :active="request()->routeIs('stats.*')" class="nav-link">
-                        {{ __('Les stats des copains') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('restaurants.index')" :active="request()->routeIs('restaurants.*')" class="nav-link">
-                        {{ __('Restaurants') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('copains.index')" :active="request()->routeIs('copains.*')" class="nav-link">
-                        {{ __('Copains') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('lieux.index')" :active="request()->routeIs('lieux.*')" class="nav-link">
-                        {{ __('Lieux') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('types.index')" :active="request()->routeIs('types.*')" class="nav-link">
-                        {{ __('Types') }}
-                    </x-nav-link>
+
+                <!-- Groupe Admin -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <li>
+                            <x-dropdown-link :href="route('copains.index')" :active="request()->routeIs('copains.*')" class="dropdown-item">
+                                {{ __('Copains') }}
+                            </x-dropdown-link>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 

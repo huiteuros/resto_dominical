@@ -9,10 +9,19 @@ use View;
 
 class RestaurantController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $restaurants = Restaurant::all();
-        return view('restaurants.index', compact('restaurants'));
+        $filter = $request->get('filter', 'all');
+        
+        if ($filter === 'sans_sortie') {
+            // Restaurants qui n'ont aucune sortie (restopasse)
+            $restaurants = Restaurant::doesntHave('restopasses')->withCount('restopasses')->get();
+        } else {
+            // Tous les restaurants avec le nombre de sorties
+            $restaurants = Restaurant::withCount('restopasses')->get();
+        }
+        
+        return view('restaurants.index', compact('restaurants', 'filter'));
     }
 
     public function create()

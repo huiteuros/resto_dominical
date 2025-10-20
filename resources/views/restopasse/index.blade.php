@@ -26,7 +26,9 @@
             <tbody>
                 @foreach($restopasses as $restopasse)
                 <tr>
-                    <td>{{ $restopasse->date_sortie->format('d/m/Y') }}</td>
+                    <td data-order="{{ $restopasse->date_sortie->format('Y-m-d') }}">
+                        {{ $restopasse->date_sortie->format('d/m/Y') }}
+                    </td>
                     <td>
                         {{ $restopasse->restaurant->nom_restau ?? '—' }}
                         @if($restopasse->numero_dimanche == -1)

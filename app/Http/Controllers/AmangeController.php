@@ -55,7 +55,18 @@ class AmangeController extends Controller
             ->whereHas('copain', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })
+            ->orderBy('created_at', 'desc')
             ->get();
+
+        // Identifier les repas sans avis (tous les champs de notation sont null)
+        $amanges = $amanges->map(function ($amange) {
+            $amange->needs_evaluation = is_null($amange->prix) 
+                && is_null($amange->qualite_nourriture) 
+                && is_null($amange->ambiance) 
+                && is_null($amange->overall) 
+                && is_null($amange->avis);
+            return $amange;
+        });
 
         return view('amange.index', compact('amanges'));
     }
