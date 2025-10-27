@@ -50,6 +50,7 @@
         {{-- Pas de modification mot de passe ici, gérer ailleurs --}}
 
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <a href="{{ route('copains.index') }}" class="btn btn-secondary">Annuler</a>
     </form>
 </div>
 @endsection

@@ -63,6 +63,60 @@ class StatsService
         return $streaks;
     }
 
+    /**
+     * Streak en cours (série de participations consécutives actuelles)
+     */
+    public static function streakEnCours()
+    {
+        $streaks = [];
+
+        foreach (Copain::with([
+            'participations' => function ($query) {
+                $query->whereHas('restopasse', function ($q) {
+                    $q->where('numero_dimanche', '>=', 0);
+                })->with([
+                            'restopasse' => function ($q) {
+                                $q->where('numero_dimanche', '>=', 0);
+                            }
+                        ]);
+            }
+        ])
+            ->orderBy('id_copain')
+            ->get() as $copain) {
+
+            $nums = $copain->participations->pluck('restopasse.numero_dimanche')->sort()->values()->toArray();
+
+            if (empty($nums)) {
+                $streaks[] = [
+                    'copain' => $copain->pseudo ?? "{$copain->prenom} {$copain->nom}",
+                    'current_streak' => 0
+                ];
+                continue;
+            }
+
+            // Calculer le streak en cours (en partant de la fin)
+            $currentStreak = 1;
+            $maxNum = max($nums);
+
+            for ($i = count($nums) - 2; $i >= 0; $i--) {
+                if ($nums[$i] === $maxNum - ($currentStreak)) {
+                    $currentStreak++;
+                } else {
+                    break;
+                }
+            }
+
+            $streaks[] = [
+                'copain' => $copain->pseudo ?? "{$copain->prenom} {$copain->nom}",
+                'current_streak' => $currentStreak
+            ];
+        }
+
+        usort($streaks, fn($a, $b) => $b['current_streak'] <=> $a['current_streak']);
+
+        return $streaks;
+    }
+
 
     /**
      * Classement restos par qualité nourriture

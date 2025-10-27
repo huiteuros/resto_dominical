@@ -39,5 +39,7 @@
         </select>
         <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
+
+    <a href="{{ route('restopasse.index') }}" class="btn btn-secondary mt-3">Retour</a>
 </div>
 @endsection

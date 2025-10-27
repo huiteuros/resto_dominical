@@ -15,5 +15,7 @@
     @endif
 
     @include('restopasse.partials.form', ['restopasse' => $restopasse])
+    
+    <a href="{{ route('restopasse.index') }}" class="btn btn-secondary mt-3">Retour</a>
 </div>
 @endsection

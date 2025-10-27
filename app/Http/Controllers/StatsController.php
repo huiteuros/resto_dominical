@@ -11,6 +11,7 @@ class StatsController extends Controller
         return view('stats.index', [
             'meilleurTaux' => StatsService::meilleurTauxParticipation(),
             'meilleurStreak' => StatsService::meilleurStreak(),
+            'streakEnCours' => StatsService::streakEnCours(),
             'meilleurQualite' => StatsService::meilleurRestoQualite(),
             'meilleurQualitePrix' => StatsService::meilleurRestoQualitePrix(),
             'meilleurOverall' => StatsService::meilleurRestoOverall(),
